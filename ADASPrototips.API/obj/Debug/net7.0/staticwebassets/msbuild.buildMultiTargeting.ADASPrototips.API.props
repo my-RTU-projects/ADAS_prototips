@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/ADASPrototips.API.props" />
+</Project>

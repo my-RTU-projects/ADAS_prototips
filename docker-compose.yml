@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+    adas-prototips-db:
+        container_name: 'adas-prototips-db'
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        restart: always
+        environment:
+            SA_PASSWORD: "Ad@sPr0t0tip$"
+            ACCEPT_EULA: "Y"
+        ports:
+            - '1433:1433'
+
+    adas-prototips-backend:
+        container_name: "adas-prototips-backend"
+        build: ./ADASPrototips.API
+        restart: always
+        ports:
+          - '5001:80'
+        depends_on:
+          - adas-prototips-db
+
+    adas-prototips-frontend:
+        container_name: 'adas-prototips-frontend'
+        build: ./ADASPrototips.Web/react-client-app
+        restart: always
+        ports:
+          - '5002:80'
+        depends_on:
+            - adas-prototips-backend

@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/ADASPrototips.API.props" />
+</Project>
